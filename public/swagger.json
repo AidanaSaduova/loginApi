@@ -1,0 +1,110 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "API description for Login method in Markdown.",
+    "version" : "0.0.1",
+    "title" : "Login API"
+  },
+  "host" : "localhost",
+  "basePath" : "/api",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/users/login.json" : {
+      "post" : {
+        "summary" : "Login method for users.",
+        "description" : "Login microservice that allows users login to the app.",
+        "operationId" : "login",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user",
+          "description" : "The user data to login",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UserLoginApiForm"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Logs the user in",
+            "schema" : {
+              "$ref" : "#/definitions/UserViewModel"
+            }
+          },
+          "400" : {
+            "description" : "Validation errors"
+          },
+          "404" : {
+            "description" : "User not found"
+          },
+          "489" : {
+            "description" : "Invalid phone number"
+          },
+          "490" : {
+            "description" : "User email not verified"
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json"
+      }
+    }
+  },
+  "definitions" : {
+    "UserLoginApiForm" : {
+      "properties" : {
+        "gaId" : {
+          "type" : "string"
+        },
+        "adId" : {
+          "type" : "string"
+        },
+        "apnId" : {
+          "type" : "string"
+        },
+        "gcmId" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "phone" : {
+          "type" : "string"
+        },
+        "phoneCc" : {
+          "type" : "string"
+        },
+        "uuid" : {
+          "type" : "string"
+        },
+        "authcode" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UserViewModel" : {
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "token" : {
+          "type" : "string"
+        },
+        "referralCode" : {
+          "type" : "string"
+        },
+        "isResponsive" : {
+          "type" : "boolean"
+        }
+      },
+      "example" : {
+        "isResponsive" : true,
+        "referralCode" : "referralCode",
+        "id" : 0,
+        "token" : "token"
+      }
+    }
+  }
+}
