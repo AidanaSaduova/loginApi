@@ -1,17 +1,19 @@
 package apimodels;
 
-import com.fasterxml.jackson.annotation.*;
-import java.util.Set;
-import javax.validation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import play.data.Form;
+import play.data.format.Formatters;
+import play.i18n.MessagesApi;
+
+import javax.validation.Validator;
 import java.util.Objects;
-import javax.validation.constraints.*;
 /**
  * UserLoginApiForm
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaPlayFrameworkCodegen", date = "2019-04-20T20:49:34.098+02:00")
 
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
-public class UserLoginApiForm   {
+public class UserLoginApiForm  extends Form {
   @JsonProperty("gaId")
   private String gaId = null;
 
@@ -41,6 +43,10 @@ public class UserLoginApiForm   {
 
   @JsonProperty("authcode")
   private String authcode = null;
+
+  public UserLoginApiForm(Class clazz, MessagesApi messagesApi, Formatters formatters, Validator validator) {
+    super(clazz, messagesApi, formatters, validator);
+  }
 
   public UserLoginApiForm gaId(String gaId) {
     this.gaId = gaId;
@@ -269,5 +275,7 @@ public class UserLoginApiForm   {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+
 }
 
