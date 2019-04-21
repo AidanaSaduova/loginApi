@@ -9,8 +9,22 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "appuser")
-public class User extends AbstractUser {
+public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
+    @Column(length = 255,nullable = true)
+    @Constraints.MaxLength(30)
+    @Constraints.MinLength(6)
+    public String password;
+
+    @Column(length = 30, nullable = false, unique = true)
+    @Constraints.MaxLength(30)
+    @Constraints.MinLength(3)
+    @Constraints.Required
+    public String username;
 
     @Column(name="apn_id", length = 500, unique = true)
     @Constraints.MaxLength(500)

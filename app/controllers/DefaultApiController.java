@@ -6,6 +6,7 @@ import handler.LoginHandler;
 import handler.SimpleLoginHandler;
 import play.Configuration;
 import play.Logger;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -30,9 +31,9 @@ public class DefaultApiController extends Controller {
     @ApiAction
     public Result login() throws Exception {
 
-        //JsonNode nodeuser = request().body().asJson();
+        /*JsonNode nodeuser = request().body().asJson();
 
-       /* UserLoginApiForm user;
+        UserLoginApiForm user;
         if (nodeuser != null) {
             user = mapper.readValue(nodeuser.toString(), UserLoginApiForm.class);
             if (configuration.getBoolean("useInputBeanValidation")) {
@@ -45,16 +46,22 @@ public class DefaultApiController extends Controller {
         if (configuration.getBoolean("useOutputBeanValidation")) {
             SwaggerUtils.validate(obj);
         }
-        JsonNode result = mapper.valueToTree(obj);*/
+        JsonNode result = mapper.valueToTree(obj);
+
+
+        return ok(result);*/
+
 
         LoginHandler loginHandler;
         Logger.debug("got a handler");
         loginHandler = new SimpleLoginHandler(mapper);
+        //Logger.debug(loginHandler.toString());
 
         Http.Request request = request();
+        //Logger.debug(request.toString());
 
         Result result = loginHandler.verifyLogin(request);
-
-        return result;
+        Logger.debug(result.toString());
+        return  ok(Json.toJson(result));
     }
 }

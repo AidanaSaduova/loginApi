@@ -23,6 +23,10 @@ public class UserViewModel   {
   @JsonProperty("isResponsive")
   private Boolean isResponsive = null;
 
+  public UserViewModel() {
+
+  }
+
   public UserViewModel id(Long id) {
     this.id = id;
     return this;
