@@ -1,10 +1,9 @@
 package apimodels;
 
-import com.fasterxml.jackson.annotation.*;
-import java.util.Set;
-import javax.validation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import models.User;
+
 import java.util.Objects;
-import javax.validation.constraints.*;
 /**
  * UserViewModel
  */
@@ -13,7 +12,7 @@ import javax.validation.constraints.*;
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class UserViewModel   {
   @JsonProperty("id")
-  private Integer id = null;
+  private Long id = null;
 
   @JsonProperty("token")
   private String token = null;
@@ -24,20 +23,27 @@ public class UserViewModel   {
   @JsonProperty("isResponsive")
   private Boolean isResponsive = null;
 
-  public UserViewModel id(Integer id) {
+  public UserViewModel id(Long id) {
     this.id = id;
     return this;
+  }
+
+  public UserViewModel(User user) {
+    this.id = user.id;
+    this.token = user.token;
+    this.referralCode = user.referralCode;
+
   }
 
    /**
    * Get id
    * @return id
   **/
-    public Integer getId() {
+    public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
