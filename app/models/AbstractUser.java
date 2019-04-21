@@ -3,8 +3,15 @@ package models;
 import play.data.validation.Constraints;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 public class AbstractUser {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
 
     @Column(length = 255,nullable = true)
     @Constraints.MaxLength(30)
