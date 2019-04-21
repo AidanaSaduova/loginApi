@@ -51,3 +51,9 @@ storage
 storagetemp
 /bin
 *.bat
+
+
+# EnviromentVariable
+# ==================
+*.env
+
