@@ -12,10 +12,8 @@ libraryDependencies ++= Seq(
   guice,
   "org.webjars" % "swagger-ui" % "3.1.5",
   "javax.validation" % "validation-api" % "1.1.0.Final",
-  "com.github.jeremyh"  %  "jBCrypt"   % "jbcrypt-0.4" //bcrypt library. At the time of writing the Maven dependency was out of date so this pulls directly from github
-  
+  "com.github.jeremyh"  %  "jBCrypt"   % "jbcrypt-0.4", //bcrypt library. At the time of writing the Maven dependency was out of date so this pulls directly from github
+  "mysql" % "mysql-connector-java" % "5.1.44"
 )
 
-/*libraryDependencies += "org.webjars" % "swagger-ui" % "3.1.5"
-libraryDependencies += "javax.validation" % "validation-api" % "1.1.0.Final"
-libraryDependencies += guice*/
+
