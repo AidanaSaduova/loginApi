@@ -3,13 +3,17 @@ package models;
 
 import Enums.Language;
 import org.joda.time.DateTime;
+import play.data.Form;
+import play.data.format.Formatters;
 import play.data.validation.Constraints;
+import play.i18n.MessagesApi;
 
 import javax.persistence.*;
+import javax.validation.Validator;
 
 @Entity
 @Table(name = "appuser")
-public class User {
+public class User extends Form {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -146,4 +150,7 @@ public class User {
     @Column(name="last_name")
     public String lastName;
 
+    public User(Class clazz, MessagesApi messagesApi, Formatters formatters, Validator validator) {
+        super(clazz, messagesApi, formatters, validator);
+    }
 }
