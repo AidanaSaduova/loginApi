@@ -14,7 +14,7 @@ public class UserFinder extends Finder<Long, User> {
     }
 
     public User byEmailOrName(String name){
-        return query().where().or(Expr.eq(FIELD_EMAIL, name), Expr.eq(FIELD_USERNAME, name)).findUnique();
+        return query().where().or(Expr.eq(FIELD_EMAIL, name), Expr.eq(FIELD_USERNAME, name)).findOne();
     }
 
 

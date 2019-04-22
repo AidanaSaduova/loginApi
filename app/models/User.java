@@ -3,14 +3,32 @@ package models;
 
 import Enums.Language;
 import org.joda.time.DateTime;
+import play.data.Form;
+import play.data.format.Formatters;
 import play.data.validation.Constraints;
+import play.i18n.MessagesApi;
 
 import javax.persistence.*;
+import javax.validation.Validator;
 
 @Entity
 @Table(name = "appuser")
-public class User extends AbstractUser {
+public class User extends Form {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
+    @Column(length = 255,nullable = true)
+    @Constraints.MaxLength(30)
+    @Constraints.MinLength(6)
+    public String password;
+
+    @Column(length = 30, nullable = false, unique = true)
+    @Constraints.MaxLength(30)
+    @Constraints.MinLength(3)
+    @Constraints.Required
+    public String username;
 
     @Column(name="apn_id", length = 500, unique = true)
     @Constraints.MaxLength(500)
@@ -132,4 +150,7 @@ public class User extends AbstractUser {
     @Column(name="last_name")
     public String lastName;
 
+    public User(Class clazz, MessagesApi messagesApi, Formatters formatters, Validator validator) {
+        super(clazz, messagesApi, formatters, validator);
+    }
 }
