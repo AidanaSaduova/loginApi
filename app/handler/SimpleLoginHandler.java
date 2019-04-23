@@ -11,7 +11,6 @@ import play.mvc.Result;
 import services.UserService;
 
 import javax.inject.Inject;
-import java.io.IOException;
 
 import static play.mvc.Results.*;
 
@@ -24,9 +23,8 @@ public class SimpleLoginHandler extends LoginHandler {
     }
 
     @Override
-    public Result verifyLogin(Http.Request request) throws IOException {
+    public Result verifyLogin(Http.Request request){
 
-        //JsonNode node = request.body().asJson();
         Form<UserLoginApiForm> form = formFactory.form(UserLoginApiForm.class).bindFromRequest();
 
 
